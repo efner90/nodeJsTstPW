@@ -13,7 +13,7 @@ export class AuthService {
   async register(email: string, password: string) {
     const existingUser = await this.usersService.findByEmail(email);
     if (existingUser) {
-      throw new ConflictException('User with this email already exists');
+      throw new ConflictException('Пользователь с таким мылом уже есть');
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -25,12 +25,12 @@ export class AuthService {
   async login(email: string, password: string) {
     const user = await this.usersService.findByEmail(email);
     if (!user) {
-      throw new UnauthorizedException('Invalid email or password');
+      throw new UnauthorizedException('Неверный пасс');
     }
   
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      throw new UnauthorizedException('Invalid email or password');
+      throw new UnauthorizedException('Неверное мыли и\или пасс');
     }
   
     return {
