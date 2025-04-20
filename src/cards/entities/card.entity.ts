@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column as DBColumn, ManyToOne, OneToMany } from 'typeorm';
 import { Column as TrelloColumn } from 'src/columns/entities/column.entity';
-import { Task } from 'src/tasks/entities/task.entity';
+import { Comment } from 'src/comments/entities/comment.entity';
 
 @Entity()
 export class Card {
@@ -16,6 +16,6 @@ export class Card {
   @ManyToOne(() => TrelloColumn, column => column.cards, { onDelete: 'CASCADE' })
   column: TrelloColumn;
 
-  @OneToMany(() => Task, task => task.card, { cascade: true })
-    tasks: Task[];
+  @OneToMany(() => Comment, comment => comment.card)
+  comments: Comment[];
 }

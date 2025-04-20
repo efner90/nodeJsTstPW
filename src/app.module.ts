@@ -5,7 +5,7 @@ import { ColumnsModule } from './columns/columns.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { CardsModule } from './cards/cards.module';
-import { TasksModule } from './tasks/tasks.module';
+import { CommentsModule } from './comments/comments.module';
 
 @Module({
   imports: [
@@ -24,7 +24,7 @@ import { TasksModule } from './tasks/tasks.module';
     UsersModule,
     ColumnsModule,
     CardsModule,
-    TasksModule
+    CommentsModule
   ],
 })
 export class AppModule {}
